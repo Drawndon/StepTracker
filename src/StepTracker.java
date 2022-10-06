@@ -14,7 +14,7 @@ public class StepTracker {
         int[] days = new int[30];
     }
 
-    public void changeStepsGoal (int newStepsGoal) {
+    public void setNewStepsGoal(int newStepsGoal) {
         stepsGoal = newStepsGoal;
     }
 
@@ -42,7 +42,7 @@ public class StepTracker {
         return sum;
     }
 
-    public void findMaxSteps (int monthS) {
+    public void getMaxSteps(int monthS) {
         int maxSteps = 0;
         for (int i = 0; i < 30; i++) {
             if (monthToData[monthS].days[i] > maxSteps) {
@@ -52,7 +52,7 @@ public class StepTracker {
         System.out.println("Максимальное пройденное кол-во шагов в месяце: " + maxSteps);
     }
 
-    public void findAvrSteps(int monthS) {
+    public void getAvrSteps(int monthS) {
         int sum = 0;
         int avr;
         for (int i = 0; i < 30; i++) {
@@ -62,25 +62,25 @@ public class StepTracker {
         System.out.println("Cреднее кол-во шагов: " + avr);
     }
 
-    public void findBestStreak(int monthS) {
-        int bestStreak = 1;
-        int[] bestStreakA = new int[30];
+    public void getBestInterval(int monthS) {
+        int bestInterval = 1;
+        int[] bestIntervalA = new int[30];
         int max = 0;
 
         for (int i = 0; i < 29; i++) {
             if (monthToData[monthS].days[i] >= stepsGoal) {
                 if (monthToData[monthS].days[i + 1] >= stepsGoal) {
-                    bestStreak++;
+                    bestInterval++;
                 }
                 if ((monthToData[monthS].days[i + 1] < stepsGoal) | (i + 1 == 29)) {
-                    bestStreakA[i] = bestStreak;
-                    bestStreak = 1;
+                    bestIntervalA[i] = bestInterval;
+                    bestInterval = 1;
                 }
             }
         }
         for (int i = 0; i < 30; i++) {
-            if (bestStreakA[i] > max) {
-                max = bestStreakA[i];
+            if (bestIntervalA[i] > max) {
+                max = bestIntervalA[i];
             }
         }
         System.out.println("Лучшая серия (дней): " + max);
