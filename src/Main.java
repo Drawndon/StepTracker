@@ -13,7 +13,7 @@ public class Main {
 
         while (userInput != 0) {
             switch (userInput) {
-                case 1 -> {
+                case 1:
                     int month;
                     int day;
                     int steps;
@@ -36,8 +36,8 @@ public class Main {
                         steps = scanner.nextInt();
                     }
                     stepTracker.saveSteps(month, day, steps);
-                }
-                case 2 -> {
+                    break;
+                case 2:
                     System.out.println("Укажите месяц");
                     int monthS = scanner.nextInt();
                     stepTracker.printStepsByDay(monthS);
@@ -48,8 +48,8 @@ public class Main {
                     converter.printCalories(stepTracker.findStepsSum(monthS));
                     stepTracker.getBestInterval(monthS);
                     System.out.println();
-                }
-                case 3 -> {
+                    break;
+                case 3:
                     int newStepsGoal;
                     System.out.println("Укажите кол-во шагов");
                     newStepsGoal = scanner.nextInt();
@@ -60,8 +60,9 @@ public class Main {
 
                     stepTracker.setNewStepsGoal(newStepsGoal);
                     System.out.println("Текущая цель по шагам: " + stepTracker.stepsGoal);
-                }
-                default -> System.out.println("Извините, такой команды пока нет");
+                    break;
+                default:
+                    System.out.println("Извините, такой команды пока нет");
             }
 
             printMenu(); // печатаем меню ещё раз перед завершением предыдущего действия
